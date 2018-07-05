@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle aist2018",
+        "command": "aist2018:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "aist2018",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "aist2018:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

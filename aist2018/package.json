@@ -1,0 +1,28 @@
+{
+  "name": "aist2018",
+  "main": "./lib/aist2018",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [],
+  "!!!activationCommands": {
+    "atom-workspace": "aist2018:toggle"
+  },
+  "repository": "https://github.com/atom/aist2018",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^2.7.2",
+    "d3-dsv": "^1.0.8",
+    "d3-format": "^1.2.1",
+    "d3-scale": "^1.0.7",
+    "d3-time-format": "^2.1.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.2.0",
+    "react-stockcharts": "^0.7.6",
+    "shortid": "^2.2.8"
+  }
+}
