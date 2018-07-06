@@ -12,19 +12,13 @@ export default class Aist2018View {
     this.model = model
 
     this.subscriptions = new CompositeDisposable()
-    this.subscriptions.add(this.model.onDidUpdate(() => this.updateCounter()))
 
     etch.initialize(this)
-
-    var ctx = this.refs.myChart
-
   }
 
   render () {
     return (
       <div class='aist2018'>
-        <div>Hello World!</div>
-        <div ref='counter' className='counter' onclick={this.didClickCounter.bind(this)}>{this.model.counter}</div>
         <div ref='canvases'></div>
       </div>
     )
@@ -45,14 +39,6 @@ export default class Aist2018View {
 
   getElement() {
     return this.element;
-  }
-
-  didClickCounter (event) {
-    this.control.handleCounter(this.model)
-  }
-
-  updateCounter() {
-    this.refs.counter.textContent = this.model.counter
   }
 
   addCanvas (el) {

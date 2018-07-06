@@ -4,11 +4,33 @@
 // for a full listing of what's available.
 @import "ui-variables";
 
+.modal {
+
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100%;
+}
+
 .aist2018 {
+
   .settings {
-    .editor {
-      float: left;
-      width: 100px;
+    height: 100px;
+    overflow-y: scroll;
+
+    .settings-row {
+      table td {
+        padding: 0px;
+        white-space: 0px;
+        width: 100px;
+      }
+      .editor, span, button{
+      }
+      td:nth-child(1) {
+        width: 100px;
+        text-align: right;
+        padding: 0px 0px;
+      }
     }
   }
 }

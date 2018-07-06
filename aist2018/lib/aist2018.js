@@ -8,8 +8,6 @@ import Model from './model';
 import { CompositeDisposable } from 'atom';
 
 var name = 'First'
-var data = [10, 15, 13]
-var labels = [1,2,3]
 
 export default {
 
@@ -23,30 +21,25 @@ export default {
     this.aistView = new Aist2018View(model, control)
 
     var Agent = require('./agent-data')
-    var dataModel = new Agent(data)
-
-    var ChartModel = require('./chart-model')
-    var chartModel = new ChartModel(name, dataModel, labels)
-
+    var LineChart = require('./line-chart')
     var Canvas = require('./canvas-view')
+
     var canvas = new Canvas(control)
-    var chart = canvas.addChartLine(chartModel.getChart())
 
-    var methods = dataModel.getAllMethods(dataModel.getNamespace())
-    canvas.addChartSettings(dataModel, methods)
+    var dataModel = new Agent()
+    dataModel.parse('c:/aist2018/data/onchain/WAN_train0.csv')
+    .then(() => {
+      console.log(dataModel)
+      canvas.addChart(new LineChart(name, dataModel))
+      this.aistView.addCanvas(canvas.getElement())
+    })
 
-    // canvas.element.onclick = function(evt){
-    //     var activePoints = chart.getElementsAtEvent(evt);
-    //     console.log('points:', activePoints)
-    //     // => activePoints is an array of points on the canvas that are at the same position as the click event.
-    // }
-    this.aistView.addCanvas(canvas.getElement())
 
     this.modalPanel = atom.workspace.addModalPanel({
       item: this.aistView.getElement(),
       visible: false
     });
-    //
+
     //
     // var methods = agent.getAllMethods(Agent.prototype)
     //

@@ -15,17 +15,26 @@ export default class ChartSettings {
   render () {
     // <span ref='paramName1' className='param-name'>Param1</span>
     // <span ref='paramName2' className='param-name'>Param1</span>
+    // <select ref='abc' name='abc' onchange={this.onDidChangeMethod.bind(this)}>
+    // <option value='1'>1</option>
+    // <option value='2'>2</option>
+    // </select>
     return (
-      <div class='settings'>
-        <select ref='abc' name='abc' onchange={this.onDidChangeMethod.bind(this)}>
-          <option value='1'>1</option>
-          <option value='2'>2</option>
-        </select>
-        <TextEditor ref='paramValue1' mini={true} className='param-value' placeholderText='' />
-
-        <TextEditor ref='paramValue2' mini={true} className='param-value' placeholderText='' />
-
-        <button ref='button' onclick={this.submit.bind(this)} />
+      <div class='settings-row'>
+        <table padding='0' spacing='0'><tr>
+        <td>
+          <span ref='method'>{this.methodName}</span>
+        </td>
+        <td>
+          <TextEditor ref='paramValue1' mini className='param-value' placeholderText='' />
+        </td>
+        <td>
+          <TextEditor ref='paramValue2' mini={true} className='param-value' placeholderText='' />
+        </td>
+        <td>
+          <button ref='button' onclick={this.submit.bind(this)} >Update</button>
+        </td>
+        </tr></table>
       </div>
     )
   }

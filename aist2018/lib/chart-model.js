@@ -1,47 +1,48 @@
 'use babel'
 
+import {CompositeDisposable, Emitter} from 'atom'
+
 export default class ChartModel {
-  constructor(name, dataModel, labels, options = {}) {
+  constructor(name, dataModel, options = {}) {
     this.name = ''
     this.dataModel = dataModel
-    this.labels = labels
     this.scale = 1
+    this.chart = null
 
-    this.tpl = {
-      // The type of chart we want to create
-      type: 'line',
+    this.tpl = {}
 
-      // The data for our dataset
-      data: {
-          labels: labels,
-          //labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [{
-              label: name,
-              backgroundColor: 'rgb(255, 99, 132)',
-              borderColor: 'rgb(255, 99, 132)',
-              data: dataModel.getData(),
-              // data: [0, 10, 5, 2, 20, 30, 45],
-          }]
-      },
+    this.subscriptions = new CompositeDisposable
+  }
 
-      // Configuration options go here
-      options: {}
-    }
+  destroy() {
+    this.subscriptions.dispose()
   }
 
   addData () {
 
   }
 
-  changeScale (value) {
+  getModel() {
+    return this.tpl
+  }
 
+  getChart() {
+    return this.chart
   }
 
   getDataModel() {
-
+    return this.dataModel
   }
-  
-  getChart() {
-    return this.tpl
+  // setChart (chart) {
+  //   this.subscriptions.add(this.dataModel.onDidUpdate(() => chart.update()))
+  //   this.chart = chart
+  // }
+
+  update() {
+    this.tpl.data.push(this.dataModel.getData());
+    // this.chart.data.datasets.forEach((dataset) => {
+    //     dataset.data.push(this.dataModel.getData());
+    // });
+    // canvasChart.update();
   }
 }
